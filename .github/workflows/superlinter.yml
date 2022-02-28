@@ -1,0 +1,17 @@
+name: Super-Linter
+
+on: push # listen for a git push event
+
+jobs: # what to run when push event happens
+  super-lint:
+    name: Lint my code
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      
+      - name: Run Super-Linter
+        uses: github/super-linter@v3
+        env:
+          DEFAULT_BRANCH: main
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
